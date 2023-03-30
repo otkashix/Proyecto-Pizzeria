@@ -1,0 +1,213 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Palanquin:wght@100&display=swap');
+
+
+/* Navigator */
+::-webkit-scrollbar {
+    width: 12px;
+    background: rgb(209, 209, 209);
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(167, 167, 167);
+    border-radius: 5px;
+}
+
+
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    text-decoration: underline;
+}
+#container{
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+
+/* Navbar */
+#nav-menu{
+    position: relative;
+    padding-left: 7%;
+    padding-right: 7%;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+    width: auto;
+    height: 50px;
+    /*border-bottom: 0.5px solid lightgrey;
+    background-color: #f5f5f5;*/
+}
+#nav-logo{
+    position: relative;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+    width: auto;
+}
+#nav-logo img{
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+#logo-title{
+    font-size: 24px;
+    font-family: 'Palanquin';
+}
+#nav-bar{
+    position: relative;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+    width: auto;
+    height: auto;
+}
+#nav-list{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+.nav-item{
+    margin-right: 10px;
+    font-size: 20px;
+    font-weight: lighter;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.nav-item a{
+    text-decoration: none;
+}
+.nav-item a:hover{
+    text-decoration: underline;
+}
+.nav-item-img:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+
+/* Content */
+#content{
+    position: relative;
+    width: auto;
+    height: auto;
+    padding-left: 7%;
+    padding-right: 7%;
+}
+#banner{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+    width: auto;
+    height: 100px;
+    background-color: black;
+    background-image: url('../images/pizza_banner.png');
+    background-size: 550px;
+    background-position: 120%, 20%;
+    background-repeat: no-repeat;
+}
+#banner-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.4);
+}
+#banner-title{
+    position: absolute;
+    padding-left: 4%;
+    width: auto;
+    height: auto;
+}
+#banner-title span{
+    display:block;
+    font-family: 'Palanquin';
+}
+#banner-title-text{
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+.banner-description{
+    font-size: 16px;
+    color: white;
+}
+.categories{
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.categories-lines{
+    display: relative;
+    width: 82%;
+    height: 10px;
+}
+.categories-title{
+    width: 25%;
+    font-size: 24px;
+    color: black;
+}
+.blue .categories-lines{
+    border: 1px solid rgb(226, 226, 226);
+    background-color: rgb(226, 226, 226);
+}
+.red .categories-lines{
+    border: 1px solid rgb(100, 100, 100);
+    background-color: rgb(109, 109, 109);
+}
+#customizer{
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+}
+
+
+/* Footer */
+footer{
+    position: relative;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: auto;
+    height: 150px;
+    font-family: monospace;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+}
+footer span{
+    display: block;
+}

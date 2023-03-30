@@ -1,0 +1,23 @@
+#visualization{
+    position: relative;
+    padding-left: 75px;
+    width: auto;
+    height: auto;
+}
+#pizza-draw{
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+}
+canvas{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    align-self: right;
+    width: auto;
+    height: auto;
+}
+.hidden-canvas{
+    visibility: hidden;
+}

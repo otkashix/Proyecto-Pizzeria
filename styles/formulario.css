@@ -1,0 +1,146 @@
+/* General */
+input{
+    caret-color: rgb(3, 160, 160);
+}
+
+
+/* Customizer */
+#form-box{
+    position: relative;
+    display: flex;
+    width: 80%;
+}
+#form-box form{
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: 'Palanquin';
+}
+.item-title{
+    font-weight: bold;
+    display: block;
+}
+.form-item-box label{
+    margin-bottom: 4px;
+    display: block;
+}
+#item-category1{
+    position: relative;
+    align-items: center;
+}
+.form-item-box{
+    margin-bottom: 20px;
+}
+#item-category2 input{
+    margin-top: 10px;
+}
+#item-category3 input{
+    margin-top: 10px;
+}
+#form-box form .inumber{
+    padding-block: 3px;
+    padding-left: 8px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+#form-box form select{
+    outline: none;
+    width: 100px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+#form-box form select:focus{
+    outline: none;
+    border: 1px solid rgb(107, 106, 106);
+}
+.btn-add{
+    width: auto;
+    padding-block: 8px;
+    padding-inline: 12px;
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+.btn-add:hover{
+    outline: none;
+    border: 1px solid rgb(107, 106, 106);
+}
+
+
+/* Customer */
+#form-customer{
+    position: relative;
+    margin-bottom: 50px;
+    width: auto;
+}
+#form-customer form{
+    position: relative;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: auto;
+    display: flex;
+    flex-direction: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+}
+.customer-box{
+    position: relative;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.customer-box label{
+    display: block;
+}
+#form-customer form .customer-input, #form-customer form textarea{
+    width: 500px;
+    height: 40px;
+    margin-bottom: 20px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 0.5px solid rgb(238, 238, 238);
+    border-radius: 5px;
+    font-size: 16px;
+    resize: none;
+}
+#form-customer form .customer-input:focus, #form-customer form textarea:focus{
+    outline: none;
+    border: 0.5px solid rgb(107, 106, 106);
+}
+#form-customer form .customer-input::placeholder, #form-customer form textarea::placeholder{
+    color: rgb(177, 177, 177);
+}
+#customer-ta{
+    width: 455px;
+    padding-right: 60px;
+}
+#tal{
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    color: rgb(179, 179, 179);
+}
+#customer-button{
+    width: 100%;
+}
+#customer-btn{
+    padding-block: 10px;
+    width: 150px;
+    align-self: center;
+    align-content: center;
+    border: 0.5px solid rgb(218, 218, 218);
+    border-radius: 5px;
+}
+#customer-btn:hover{
+    border: 0.5px solid rgb(107, 106, 106);
+}
