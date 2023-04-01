@@ -19,11 +19,20 @@ while(superparent.firstChild) {
 
 let localBebidas = localStorage.getItem("bebidas")
 let bebidas = JSON.parse(localBebidas)
-let cc = Number(Object.values(bebidas)[0]["cc"])
-let ccz = Number(Object.values(bebidas)[1]["zero"])
-let cerv = Number(Object.values(bebidas)[2]["cerv"])
-let agua = Number(Object.values(bebidas)[3]["agua"])
-console.log(`cc: ${cc} \n ccz: ${ccz} \n cerveza: ${cerv} \n agua: ${agua}`)
+let cc, ccz, cerv, agua
+// console.log(`cc: ${cc} \n ccz: ${ccz} \n cerveza: ${cerv} \n agua: ${agua}`)
+if(localBebidas){
+    bebidas = JSON.parse(localBebidas)
+    cc = Number(Object.values(bebidas)[0]["cc"])
+    ccz = Number(Object.values(bebidas)[1]["zero"])
+    cerv = Number(Object.values(bebidas)[2]["cerv"])
+    agua = Number(Object.values(bebidas)[3]["agua"])
+} else{
+    cc = 0
+    ccz = 0
+    cerv = 0
+    agua = 0
+}
 
 let pa = document.createElement("div")
 pa.id = `bebida`
@@ -121,7 +130,7 @@ export function borrarPizza(id){
     // Pusheamos el Local Storage de nuevo
     // Se puede usar el código de prueba.js
     let identifier = Number(id.slice(2))
-    console.log(identifier)
+    // console.log(identifier)
     let localPizzas = localStorage.getItem("pizzas")
     let pizzas = JSON.parse(localPizzas)
     let newPizzas = []
@@ -137,4 +146,94 @@ export function borrarPizza(id){
 
 export function reiniciarPizzas(){
     localStorage.removeItem("pizzas")
+}
+
+export async function crearTicket(){
+    let dictionary = {
+        "cc": "Coca Cola",
+        "zero": "Coca Cola Zero",
+        "cerv": "Cerveza",
+        "agua": "Agua"
+    }
+
+    const localBebidas = localStorage.getItem("bebidas")
+    let bebidas = JSON.parse(localBebidas)
+    const localPizzas = localStorage.getItem("pizzas")
+    let pizzas = JSON.parse(localPizzas)
+    const precios = await fetch('./scripts/precios.json').then(response => response.json())
+    // console.log(precios)
+    let coste = 0
+    
+    let parent = document.createElement("div")
+    parent.id = "pedido"
+    parent.classList.add("modal")
+    let btnClose = document.createElement("img")
+    btnClose.src = "./images/close.png"
+    btnClose.id = "pedido-cerrar"
+    btnClose.addEventListener("click", () => {
+        btnClose.parentElement.remove()
+    })
+    parent.appendChild(btnClose)
+    let ticket = document.createElement("p")
+    ticket.innerText = "TICKET"
+    ticket.id = "pedido-ticket"
+    parent.appendChild(ticket)
+    let separador = document.createElement("hr")
+    parent.appendChild(separador)
+    let titleBebidas = document.createElement("p")
+    titleBebidas.innerText = "BEBIDAS"
+    titleBebidas.classList.add("pedido-title")
+    parent.appendChild(titleBebidas)
+
+    bebidas.map(bebida => {
+        // console.log(`Bebida: ${Object.keys(bebida)}`)
+        // console.log(`Precio: ${precios["bebidas"][Object.keys(bebida)]}`)
+        coste += Number(precios["bebidas"][Object.keys(bebida)]) * Number(Object.values(bebida))
+        // console.log(`Nuevo coste: ${coste}`)
+        let item = document.createElement("p")
+        item.classList.add("pedido-item")
+        item.innerText = `${dictionary[Object.keys(bebida)]}(${Number(precios["bebidas"][Object.keys(bebida)])}€) x${Number(Object.values(bebida))}     -> ${Number(precios["bebidas"][Object.keys(bebida)]) * Number(Object.values(bebida))}€`
+        parent.appendChild(item)
+    })
+
+    let titlePizzas = document.createElement("p")
+    titlePizzas.innerText = "PIZZAS"
+    titlePizzas.classList.add("pedido-title")
+    parent.appendChild(titlePizzas)
+    pizzas.map(pizza => {
+        coste += precios["base"]
+        let price = precios["base"]
+        pizza["ingredientes"].map(ing => {
+            // console.log(ing)
+            coste += Number(precios["ingredientes"][ing])
+            price += Number(precios["ingredientes"][ing])
+            // console.log(`Precio de  **${ing}**  es de  **${precios["ingredientes"][ing]}**`)
+            // console.log(`Nuevo coste: ${coste}`)
+        })
+        let item = document.createElement("p")
+        item.classList.add("pedido-item")
+        item.innerText = `PIZZA CUSTOMIZADA: ${pizza["ingredientes"].join(", ")}     -> ${price}€`
+        parent.appendChild(item)
+    })
+    let textoPrecio = document.createElement("p")
+    textoPrecio.id = "pedido-precio"
+    textoPrecio.innerText = `TOTAL: ${coste}€`
+    parent.appendChild(textoPrecio)
+
+    let nombre = document.createElement("p")
+    nombre.innerText = `A nombre de: ${document.getElementById("name-input").value}`
+    parent.appendChild(nombre)
+    let direccion = document.createElement("p")
+    direccion.innerText = `A dirección: ${document.getElementById("address-input").value}`
+    parent.appendChild(direccion)
+    let tel = document.createElement("p")
+    tel.innerText = `Teléfono de contacto: ${document.getElementById("telephone-input").value}`
+    parent.appendChild(tel)
+    let desc = document.createElement("p")
+    desc.innerText = `Comentario: ${document.getElementById("customer-ta").value}`
+    parent.appendChild(desc)
+
+    document.body.appendChild(parent)
+    localStorage.removeItem("pizzas")
+    localStorage.removeItem("bebidas")
 }

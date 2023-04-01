@@ -1,7 +1,7 @@
 export function idiomaRedireccion(){
     // Redireccionar al usuario en base a su idioma y/o a los idiomas soportados por la página
-    console.log("LocalStorage: \n" + localStorage.getItem("language"))
-    console.log("Navigator: \n" + navigator.language)
+    // console.log("LocalStorage: \n" + localStorage.getItem("language"))
+    // console.log("Navigator: \n" + navigator.language)
     let lang = localStorage.getItem("language")
     if(!lang) localStorage.setItem("language", navigator.language)
     /*lang === "es" ? redirect("es") : redirect("en")

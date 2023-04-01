@@ -1,18 +1,17 @@
 {
     "base": 5,
-    "ingredientes": [
-        {
-            "york": 1,
-            "jamon": 2,
-            "atun": 0.75,
-            "aceitunas": 1.50,
-            "huevo": 0.50
-        }
-    ],
+    "ingredientes":
+    {
+        "york": 1,
+        "jamon": 2,
+        "atun": 0.75,
+        "acei": 1.50,
+        "huevo": 0.50
+    },
     "bebidas": {
-        "cola": 1,
-        "colazero": 1,
-        "cerveza": 0.75,
+        "cc": 1,
+        "zero": 1,
+        "cerv": 0.75,
         "agua": 0.50
     }
 }
