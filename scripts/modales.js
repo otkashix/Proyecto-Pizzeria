@@ -63,3 +63,47 @@ export function cookiesControlador(){
         })
     }
 }
+
+export function modalError(tipo){
+    let parent = document.createElement("div")
+    parent.id = `modal-error`
+    parent.classList.add("modal")
+    parent.classList.add("modal-error")
+    let menu = document.createElement("div")
+    menu.classList.add("menu-box")
+    let titulo = document.createElement("span")
+    titulo.classList.add("menu-title")
+    titulo.innerText = "ERROR"
+    menu.appendChild(titulo)
+    let pic = document.createElement("img")
+    pic.src = './images/close.png'
+    pic.classList.add("btn-remove")
+    pic.id = "modal-error-close"
+    pic.addEventListener("click", () => {
+        pic.parentNode.parentNode.remove()
+    })
+    menu.appendChild(pic)
+    parent.appendChild(menu)
+    let cont = document.createElement("div")
+    cont.id = `modal-error-description`
+    cont.classList.add(`modal-error-description`)
+    let text = document.createElement("span")
+    if(tipo === "bebida"){
+        text.innerText = `No puede realizarse el pedido sin haber añadido bebidas (se pueden añadir 0 bebidas)`
+    } else if(tipo === "pizzas"){
+        text.innerText = `No puede realizarse el pedido sin haber añadido pizzas`
+    } else if(tipo === "nombre"){
+        text.innerText = `No puede realizarse el pedido sin haber añadido un nombre de contacto`
+    } else if(tipo === "telefono"){
+        text.innerText = `No puede realizarse el pedido sin haber añadido un número de contacto` 
+    } else if(tipo === "direccion"){
+        text.innerText = `No puede realizarse el pedido sin haber añadido una dirección de reparto`
+    } else{
+        text.innerText = `Ha ocurrido un error. Contacte con soporte.`
+    }
+    
+    text.classList.add(`model-error-text`)
+    cont.appendChild(text)
+    parent.appendChild(cont)
+    document.body.appendChild(parent)
+}

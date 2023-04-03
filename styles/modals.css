@@ -186,3 +186,35 @@
     margin-bottom: 5px;
     font-weight: bold;
 }
+
+#modal-error{
+    width: 300px;
+    height: 500px;
+    top: 20%;
+    left: 40%;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Palanquin';
+    overflow-y: auto;
+}
+#modal-error-close{
+    position: absolute;
+    right: 20px;
+    width: 15px;
+    height: 15px;
+}
+.menu-box{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+}
+.menu-title{
+    font-size: 24px;
+}
+#modal-error-description{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+}

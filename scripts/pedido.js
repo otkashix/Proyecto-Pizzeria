@@ -1,4 +1,4 @@
-import { funcionalidadesCarrito } from "./modales.js"
+import { funcionalidadesCarrito, modalError } from "./modales.js"
 
 export function actualizarCarrito(pedido) {
 /*
@@ -20,7 +20,7 @@ while(superparent.firstChild) {
 let localBebidas = localStorage.getItem("bebidas")
 let bebidas = JSON.parse(localBebidas)
 let cc, ccz, cerv, agua
-// console.log(`cc: ${cc} \n ccz: ${ccz} \n cerveza: ${cerv} \n agua: ${agua}`)
+
 if(localBebidas){
     bebidas = JSON.parse(localBebidas)
     cc = Number(Object.values(bebidas)[0]["cc"])
@@ -158,8 +158,10 @@ export async function crearTicket(){
 
     const localBebidas = localStorage.getItem("bebidas")
     let bebidas = JSON.parse(localBebidas)
+    if(!localBebidas || localBebidas === null || localBebidas === undefined || localBebidas === '') return modalError("bebida")
     const localPizzas = localStorage.getItem("pizzas")
     let pizzas = JSON.parse(localPizzas)
+    if(!localPizzas || localPizzas === null || localPizzas === undefined || localPizzas === '') return modalError("pizza")
     const precios = await fetch('./scripts/precios.json').then(response => response.json())
     // console.log(precios)
     let coste = 0
@@ -221,13 +223,19 @@ export async function crearTicket(){
     parent.appendChild(textoPrecio)
 
     let nombre = document.createElement("p")
-    nombre.innerText = `A nombre de: ${document.getElementById("name-input").value}`
+    let nombreValor = document.getElementById("name-input").value
+    if(!nombreValor || nombreValor === null || nombreValor === undefined || nombreValor === '') return modalError("nombre")
+    nombre.innerText = `A nombre de: ${nombreValor}`
     parent.appendChild(nombre)
     let direccion = document.createElement("p")
-    direccion.innerText = `A dirección: ${document.getElementById("address-input").value}`
+    let direccionValor = document.getElementById("address-input").value
+    if(!direccionValor || direccionValor === null || direccionValor === undefined || direccionValor === '') return modalError("direccion")
+    direccion.innerText = `A dirección: ${direccionValor}`
     parent.appendChild(direccion)
     let tel = document.createElement("p")
-    tel.innerText = `Teléfono de contacto: ${document.getElementById("telephone-input").value}`
+    let telValor = document.getElementById("telephone-input").value
+    if(!telValor || telValor === null || telValor === undefined || telValor === '') return modalError("telefono")
+    tel.innerText = `Teléfono de contacto: ${telValor}`
     parent.appendChild(tel)
     let desc = document.createElement("p")
     desc.innerText = `Comentario: ${document.getElementById("customer-ta").value}`
