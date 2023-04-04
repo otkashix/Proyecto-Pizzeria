@@ -5,21 +5,21 @@ let ingredientes = [];
 // Detectar los cambios de los ingredientes
 const divIn = document.getElementById("item-category2");
 const chooses = divIn.getElementsByTagName("input");
-//const chooses = chose.getElementsByTagName("input")
+// const chooses = chose.getElementsByTagName("input")
 
 // Cada vez que cambie un checkbox comprobará si está marcado o no y si está en la lista
 function triggerChange(num) {
     if (chooses[num].checked) {
         if (!ingredientes.includes(chooses[num].id)) {
             ingredientes.push(chooses[num].id);
-            console.log(`Añadido: ${chooses[num].id} \n ${ingredientes}`);
+            // console.log(`Añadido: ${chooses[num].id} \n ${ingredientes}`);
             updateCanvas();
         }
     } else {
         for (let i = 0; i < ingredientes.length; i++) {
             if (ingredientes[i] === chooses[num].id) {
                 ingredientes.splice(i, 1);
-                console.log(`Removido: ${chooses[num].id} \n ${ingredientes}`);
+                // console.log(`Removido: ${chooses[num].id} \n ${ingredientes}`);
                 updateCanvas();
             }
         }

@@ -122,16 +122,7 @@ pedido.map((item) => {
 }
 
 export function borrarPizza(id){
-    console.log(`Parent ID: **${id}**`)
-    // ✅ Tenemos que borrar el p- y quedarnos con el número
-    // Después tenemos que coger el pedido del Local Storage
-    // Recorrer todo el Local Storage
-    // Checkear si estamos en esa id
-    // Si estamos, entonces NO AÑADIMOS
-    // Pusheamos el Local Storage de nuevo
-    // Se puede usar el código de prueba.js
     let identifier = Number(id.slice(2))
-    // console.log(identifier)
     let localPizzas = localStorage.getItem("pizzas")
     let pizzas = JSON.parse(localPizzas)
     let newPizzas = []
@@ -164,7 +155,6 @@ export async function crearTicket(){
     let pizzas = JSON.parse(localPizzas)
     if(!localPizzas || localPizzas === null || localPizzas === undefined || localPizzas === '') return modalError("pizza")
     const precios = await fetch('./scripts/precios.json').then(response => response.json())
-    // console.log(precios)
     let coste = 0
     
     let parent = document.createElement("div")
@@ -189,10 +179,7 @@ export async function crearTicket(){
     parent.appendChild(titleBebidas)
 
     bebidas.map(bebida => {
-        // console.log(`Bebida: ${Object.keys(bebida)}`)
-        // console.log(`Precio: ${precios["bebidas"][Object.keys(bebida)]}`)
         coste += Number(precios["bebidas"][Object.keys(bebida)]) * Number(Object.values(bebida))
-        // console.log(`Nuevo coste: ${coste}`)
         let item = document.createElement("p")
         item.classList.add("pedido-item")
         item.innerText = `${dictionary[Object.keys(bebida)]}(${Number(precios["bebidas"][Object.keys(bebida)])}€) x${Number(Object.values(bebida))}     -> ${Number(precios["bebidas"][Object.keys(bebida)]) * Number(Object.values(bebida))}€`
@@ -207,11 +194,8 @@ export async function crearTicket(){
         coste += precios["base"]
         let price = precios["base"]
         pizza["ingredientes"].map(ing => {
-            // console.log(ing)
             coste += Number(precios["ingredientes"][ing])
             price += Number(precios["ingredientes"][ing])
-            // console.log(`Precio de  **${ing}**  es de  **${precios["ingredientes"][ing]}**`)
-            // console.log(`Nuevo coste: ${coste}`)
         })
         let item = document.createElement("p")
         item.classList.add("pedido-item")

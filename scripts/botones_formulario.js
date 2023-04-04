@@ -48,10 +48,8 @@ addPizza.addEventListener("click", () => {
     let order = () => {
         let final = []
         let pizzas = JSON.parse(localPizzas)
-        // console.log(`Cogemos ${JSON.stringify(pizzas)}`)
         if(!pizzas){
             final.push(pizza)
-            // console.log(`Creada nueva pizza ${JSON.stringify(pizza)}`)
         }else{
             pizzas.map(p => {
                 final.push(p)
@@ -63,7 +61,6 @@ addPizza.addEventListener("click", () => {
         setTimeout(funcionalidadesCarrito, 1000)
         return JSON.stringify(final)
     }
-    // console.log(order())
 
     localStorage.setItem("pizzas", order())
     

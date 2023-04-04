@@ -26,7 +26,12 @@ export async function getPedidos(){
         "cc": "Coca Cola",
         "zero": "Coca Cola Zero",
         "cerv": "Cerveza",
-        "agua": "Agua"
+        "agua": "Agua",
+        "jamon": "jamón serrano",
+        "york": "jamón york",
+        "atun": "atún",
+        "acei": "aceitunas",
+        "huevo": "huevo"
     }
 
     const pedidosCol = collection(db, 'pedidos')
@@ -61,7 +66,11 @@ export async function getPedidos(){
 
             const pizzas_item = document.createElement("p")
             pizzas_item.classList.add("pizza-ingredientes")
-            pizzas_item.innerText = `Masa ${pi.masa}, queso ${pi.queso}, tomate ${pi.tomate}, ingredientes: ${pi.ingredientes.join(", ")}`
+            let ingre = [pi.masa, pi.queso, pi.tomate]
+            pi["ingredientes"].map(ing => {
+                ingre.push(dictionary[ing])
+            })
+            pizzas_item.innerText = `Masa ${pi.masa}, queso ${pi.queso}, tomate ${pi.tomate}, ${ingre.join(", ")}`
             pedido.appendChild(pizzas_item)
         })
 
@@ -72,11 +81,14 @@ export async function getPedidos(){
 
         const bebidas_item = document.createElement("p")
         bebidas_item.classList.add("bebidas-cantidad")
-        console.log(item.bebidas)
+        let bebidasArray = []
         item["bebidas"].map(be => {
-            console.log(be)
-            bebidas_item.innerText += `${dictionary[Object.keys(be)]}: ${Object.values(be)}, `
+            if(Object.values(be) > 0){
+                bebidasArray.push(`${dictionary[Object.keys(be)]}: ${Object.values(be)}`)
+            }
         })
+        if(bebidasArray.length <= 0) bebidasArray.push("Sin bebidas")
+        bebidas_item.innerText = `${bebidasArray.join('\n')}`
         
         pedido.appendChild(bebidas_item)
     })
@@ -98,13 +110,7 @@ export async function getPedidos(){
 }
 
 export async function addPedido(pizzas, bebidas){
-    const alphabet = [...Array(26)].map((_, i) => String.fromCharCode('a'.charCodeAt(0) + i));
-    const numbers = [...Array(10).keys()].map(String);
-    const alphabetArray = [...alphabet, ...alphabet.map(letter => letter.toUpperCase()), ...numbers];
-
-
     let fecha = Date.now()
-    let nombre = "nombre"
     let dato = {
         fecha: fecha,
         pizzas: pizzas,

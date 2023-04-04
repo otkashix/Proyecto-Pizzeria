@@ -237,6 +237,12 @@
 .fecha-pedido, .pizza-item, .bebidas-item{
     font-weight: bold;
 }
+.fecha-pedido{
+    font-size: 24px;
+}
+.pizza-item, .bebidas.item{
+    font-size: 16px;
+}
 .bebidas-cantidad{
     margin-bottom: 20px;
 }

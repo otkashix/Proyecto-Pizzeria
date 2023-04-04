@@ -24,4 +24,3 @@ const btnPedidos = document.getElementById("dbPedidos")
 btnPedidos.addEventListener("click", () => {
     getPedidos()
 })
-getPedidos()

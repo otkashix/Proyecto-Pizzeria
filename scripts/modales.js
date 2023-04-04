@@ -58,7 +58,6 @@ export function cookiesControlador(){
         const acceptBtn = document.getElementById("cookies-button")
         acceptBtn.addEventListener("click", function(){
             localStorage.setItem("acceptedCookies", true)
-            console.log("Funciona")
             acceptBtn.parentNode.parentNode.parentNode.remove()
         })
     }
