@@ -154,6 +154,7 @@
 }
 
 
+/* Modal Pedido */
 #pedido{
     width: 300px;
     height: 500px;
@@ -187,6 +188,8 @@
     font-weight: bold;
 }
 
+
+/* Modal Error */
 #modal-error{
     width: 300px;
     height: 500px;
@@ -217,4 +220,23 @@
     text-align: center;
     margin-bottom: 10px;
     font-size: 16px;
+}
+
+
+/* Todos los pedidos Modal*/
+#todos-pedidos-modal{
+    width: 300px;
+    height: 500px;
+    top: 20%;
+    left: 40%;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Palanquin';
+    overflow-y: auto;
+}
+.fecha-pedido, .pizza-item, .bebidas-item{
+    font-weight: bold;
+}
+.bebidas-cantidad{
+    margin-bottom: 20px;
 }

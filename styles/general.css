@@ -102,6 +102,9 @@ a{
     cursor: pointer;
     text-decoration: underline;
 }
+#dbPedidos:hover{
+    cursor: grab
+}
 
 
 /* Content */

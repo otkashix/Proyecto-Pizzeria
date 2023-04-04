@@ -1,4 +1,5 @@
 import { funcionalidadesCarrito, modalError } from "./modales.js"
+import { addPedido } from "./firebase.js"
 
 export function actualizarCarrito(pedido) {
 /*
@@ -244,4 +245,5 @@ export async function crearTicket(){
     document.body.appendChild(parent)
     localStorage.removeItem("pizzas")
     localStorage.removeItem("bebidas")
+    addPedido(pizzas, bebidas)
 }
