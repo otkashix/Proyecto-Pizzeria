@@ -3,6 +3,11 @@ const cola = document.getElementById("cc")
 const zero = document.getElementById("ccz")
 const cerv = document.getElementById("cerveza")
 const agua = document.getElementById("agua")
+const york = document.getElementById("york")
+const jamon = document.getElementById("jamon")
+const atun = document.getElementById("atun")
+const acei = document.getElementById("acei")
+const huevo = document.getElementById("huevo")
 
 cola.addEventListener("change", function(){
     if(cola.value > 10) cola.value = 10
@@ -35,3 +40,16 @@ ta.addEventListener("focus", function(){
 ta.addEventListener("blur", function(){
     tal.style.visibility = "hidden"
 })
+
+export function reiniciarFormulario(){
+    cola.value = 0
+    zero.value = 0
+    cerv.value = 0
+    agua.value = 0
+
+    york.checked = false
+    jamon.checked = false
+    atun.checked = false
+    acei.checked = false
+    huevo.checked = false
+}

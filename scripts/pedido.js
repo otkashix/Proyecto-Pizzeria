@@ -1,5 +1,6 @@
 import { funcionalidadesCarrito, modalError } from "./modales.js"
 import { addPedido } from "./firebase.js"
+import { reiniciarFormulario } from "./formulario.js"
 
 export function actualizarCarrito(pedido) {
 /*
@@ -72,57 +73,58 @@ if(localBebidas){
     }
 }
 
-if(pedido !== undefined){
-    pedido.map((item) => {
-        // Diccionario para al mostrar los ingredientes, muestre cada ingrediente seriamente. Ej: "Aceituna" en vez de "acei"
-        let dictionary = [
-            {"jamon": "Jamón Serrano"},
-            {"york": "Jamón York"},
-            {"atun": "Atún"},
-            {"acei": "Aceitunas"},
-            {"huevo": "Huevo"}
-        ]
-    
-        let nuevoIng = []
-        item["ingredientes"].map(i => {
-            dictionary.map(word => {
-                if(String(Object.keys(word)) === i){
-                    nuevoIng.push(String(Object.values(word)))
-                }
+    if(pedido !== undefined){
+        pedido.map((item) => {
+            // Diccionario para al mostrar los ingredientes, muestre cada ingrediente seriamente. Ej: "Aceituna" en vez de "acei"
+            let dictionary = [
+                {"jamon": "Jamón Serrano"},
+                {"york": "Jamón York"},
+                {"atun": "Atún"},
+                {"acei": "Aceitunas"},
+                {"huevo": "Huevo"}
+            ]
+        
+            let nuevoIng = []
+            item["ingredientes"].map(i => {
+                dictionary.map(word => {
+                    if(String(Object.keys(word)) === i){
+                        nuevoIng.push(String(Object.values(word)))
+                    }
+                })
             })
+        
+            let parent = document.createElement("div")
+            parent.id = `p-${item.id}`
+            parent.classList.add("product-box")
+            let father = document.createElement("div")
+            father.classList.add("product-bar")
+            let titulo = document.createElement("span")
+            titulo.classList.add("product-title")
+            titulo.innerText = "PIZZA CUSTOMIZADA"
+            father.appendChild(titulo)
+            let pic = document.createElement("img")
+            pic.src = './images/close.png'
+            pic.classList.add("btn-remove")
+            father.appendChild(pic)
+            let masa = document.createElement("p")
+            masa.innerText = `Masa: ${item.masa}`
+            let tomate = document.createElement("p")
+            tomate.innerText = `Tomate: ${item.tomate}`
+            let queso = document.createElement("p")
+            queso.innerText = `Queso: ${item.queso}`
+            let ingr = document.createElement("span")
+            ingr.classList.add("product-value")
+            ingr.innerText = `Ingredientes: ${nuevoIng.join(", ")}`
+            parent.appendChild(father)
+            parent.appendChild(masa)
+            parent.appendChild(tomate)
+            parent.appendChild(queso)
+            parent.appendChild(ingr)
+            superparent.appendChild(parent)
+            funcionalidadesCarrito()
+            reiniciarFormulario()
         })
-    
-        let parent = document.createElement("div")
-        parent.id = `p-${item.id}`
-        parent.classList.add("product-box")
-        let father = document.createElement("div")
-        father.classList.add("product-bar")
-        let titulo = document.createElement("span")
-        titulo.classList.add("product-title")
-        titulo.innerText = "PIZZA CUSTOMIZADA"
-        father.appendChild(titulo)
-        let pic = document.createElement("img")
-        pic.src = './images/close.png'
-        pic.classList.add("btn-remove")
-        father.appendChild(pic)
-        let masa = document.createElement("p")
-        masa.innerText = `Masa: ${item.masa}`
-        let tomate = document.createElement("p")
-        tomate.innerText = `Tomate: ${item.tomate}`
-        let queso = document.createElement("p")
-        queso.innerText = `Queso: ${item.queso}`
-        let ingr = document.createElement("span")
-        ingr.classList.add("product-value")
-        ingr.innerText = `Ingredientes: ${nuevoIng.join(", ")}`
-        parent.appendChild(father)
-        parent.appendChild(masa)
-        parent.appendChild(tomate)
-        parent.appendChild(queso)
-        parent.appendChild(ingr)
-        superparent.appendChild(parent)
-        funcionalidadesCarrito()
-    })
-}
+    }
 
 }
 
@@ -245,4 +247,5 @@ export async function crearTicket(){
     localStorage.removeItem("bebidas")
     addPedido(pizzas, bebidas)
     actualizarCarrito()
+    reiniciarFormulario()
 }
