@@ -105,6 +105,12 @@ a{
 #dbPedidos:hover{
     cursor: grab
 }
+.lang-btn{
+    background-color: inherit;
+    border: 0.5px solid black;
+    padding-inline: 10px;
+    border-radius: 3px;
+}
 
 
 /* Content */
@@ -151,7 +157,7 @@ a{
     font-weight: bold;
     color: white;
 }
-.banner-description{
+#banner-description{
     font-size: 16px;
     color: white;
 }

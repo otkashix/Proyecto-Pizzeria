@@ -36,10 +36,12 @@
                     <ul id="nav-list">
                         <li class="nav-item" id="dbPedidos">Todos los pedidos</li>
                         <li class="nav-item">
-                            <a href="" class="nav-item-list" id="lang-en">🇺🇸</a>
+                            <!--<a href="" class="nav-item-list" id="lang-en">🇺🇸</a>-->
+                            <button id="lang-en" class="lang-btn">🇺🇸</button>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-item-list" id="lang-es">🇪🇸</a>
+                            <!--<a href="" class="nav-item-list" id="lang-es">🇪🇸</a>-->
+                            <button id="lang-es" class="lang-btn">🇪🇸</button>
                         </li>
                         <li class="nav-item">
                             <img
@@ -61,7 +63,7 @@
                         <span id="banner-title-text"
                             >¡AHORA PUEDES CUSTOMIZAR TU PIZZA!</span
                         >
-                        <span class="banner-description"
+                        <span id="banner-description"
                             >Los envíos ahora son gratis a partir de un importe
                             igual o superior a 20€ ¡Aprovecha!</span
                         >
@@ -69,7 +71,7 @@
                 </div>
 
                 <div class="categories blue">
-                    <p class="categories-title">CUSTOMIZA TU PIZZA</p>
+                    <p class="categories-title" id="category-customize">CUSTOMIZA TU PIZZA</p>
                     <div class="categories-lines"></div>
                 </div>
 
@@ -78,7 +80,7 @@
                         <form id="form-customizer">
                             <div id="item-category1">
                                 <div class="form-item-box">
-                                    <label for="masa" class="item-title"
+                                    <label for="masa" class="item-title" id="label-masa"
                                         >MASA</label
                                     >
                                     <select name="masa" id="masa">
@@ -87,7 +89,7 @@
                                     </select>
                                 </div>
                                 <div class="form-item-box">
-                                    <label for="base" class="item-title"
+                                    <label for="base" class="item-title" id="label-base"
                                         >TOMATE</label
                                     >
                                     <select name="base" id="base">
@@ -96,7 +98,7 @@
                                     </select>
                                 </div>
                                 <div class="form-item-box">
-                                    <label for="queso" class="item-title"
+                                    <label for="queso" class="item-title" id="label-queso"
                                         >QUESO</label
                                     >
                                     <select name="quso" id="queso">
@@ -108,7 +110,7 @@
                                 </div>
                             </div>
                             <div id="item-category2">
-                                <span class="item-title">INGREDIENTES</span>
+                                <span class="item-title" id="item-ingredientes">INGREDIENTES</span>
                                 <input
                                     type="checkbox"
                                     id="york"
@@ -116,7 +118,7 @@
                                     value="Queso"
                                     class="ingredientes"
                                 />
-                                <label for="york">Jamón York</label><br />
+                                <label for="york" id="label-york">Jamón York</label><br />
                                 <input
                                     type="checkbox"
                                     id="jamon"
@@ -124,7 +126,7 @@
                                     value="Queso"
                                     class="ingredientes"
                                 />
-                                <label for="jamon">Jamón Serrano</label><br />
+                                <label for="jamon" id="label-jamon">Jamón Serrano</label><br />
                                 <input
                                     type="checkbox"
                                     id="atun"
@@ -132,7 +134,7 @@
                                     value="Queso"
                                     class="ingredientes"
                                 />
-                                <label for="atun">Atún</label><br />
+                                <label for="atun" id="label-atun">Atún</label><br />
                                 <input
                                     type="checkbox"
                                     id="acei"
@@ -140,7 +142,7 @@
                                     value="Queso"
                                     class="ingredientes"
                                 />
-                                <label for="acei">Aceitunas</label><br />
+                                <label for="acei" id="label-acei">Aceitunas</label><br />
                                 <input
                                     type="checkbox"
                                     id="huevo"
@@ -148,7 +150,7 @@
                                     value="Queso"
                                     class="ingredientes"
                                 />
-                                <label for="huevo">Huevo</label><br />
+                                <label for="huevo" id="label-huevo">Huevo</label><br />
                                 <input
                                     type="button"
                                     value="Añadir pizza"
@@ -157,7 +159,7 @@
                                 />
                             </div>
                             <div id="item-category3">
-                                <span class="item-title">BEBIDAS</span>
+                                <span class="item-title" id="item-bebidas">BEBIDAS</span>
                                 <input
                                     type="number"
                                     value="0"
@@ -167,7 +169,7 @@
                                     name="cc"
                                     id="cc"
                                 />
-                                <label for="cc">Coca Cola</label><br />
+                                <label for="cc" id="label-cc">Coca Cola</label><br />
                                 <input
                                     type="number"
                                     value="0"
@@ -177,7 +179,7 @@
                                     name="ccz"
                                     id="ccz"
                                 />
-                                <label for="ccz">Coca Cola Zero</label><br />
+                                <label for="ccz" id="label-ccz">Coca Cola Zero</label><br />
                                 <input
                                     type="number"
                                     value="0"
@@ -187,7 +189,7 @@
                                     name="cerveza"
                                     id="cerveza"
                                 />
-                                <label for="cerveza">Cerveza</label><br />
+                                <label for="cerveza" id="label-cerv">Cerveza</label><br />
                                 <input
                                     type="number"
                                     value="0"
@@ -197,7 +199,7 @@
                                     name="agua"
                                     id="agua"
                                 />
-                                <label for="agua">Agua 1L</label><br />
+                                <label for="agua" id="label-agua">Agua 1L</label><br />
                                 <input
                                     type="button"
                                     value="Establecer bebidas"
@@ -226,7 +228,7 @@
                 </div>
 
                 <div class="categories red">
-                    <p class="categories-title">RELLENA TUS DATOS</p>
+                    <p class="categories-title" id="category-data">RELLENA TUS DATOS</p>
                     <div class="categories-lines"></div>
                 </div>
 
@@ -280,7 +282,7 @@
 
             <div class="modal" id="cart-modal" class="open-width">
                 <div id="menu-bar">
-                    <span>TU CARRITO</span>
+                    <span id="modal-bar-title">TU CARRITO</span>
                     <img
                         src="./images/close.png"
                         id="btnClose"
@@ -293,21 +295,20 @@
             </div>
 
             <footer>
-                <span
+                <span id="footer-one"
                     >PIZZERÍA - LA MAMMA SUA© 2023 - 2023 | TODOS LOS DERECHOS
                     RESERVADOS</span
                 >
-                <span
+                <span id="footer-two"
                     >EN CASO DE QUERER ENTABLAR CONTACTO ESCRIBIR AL E-MAIL -
                     esteemailnoexiste@dominio.com - O LLAMAR AL NÚMERO 900 00 00
                     00</span
                 >
-                <span
-                    >PÁGINA WEB DESARROLLADA POR
+                <span id="footer-three"
+                    >PÁGINA WEB DESARROLLADA POR</span>
                     <a href="https://github.com/iDelTer" target="_blank"
                         >IVÁN DELGADO TERROSO</a
-                    ></span
-                >
+                    >
             </footer>
         </div>
 

@@ -1,5 +1,5 @@
 import { animacionCarrito, funcionalidadesCarrito, cookiesControlador } from "./modales.js"
-import { idiomaRedireccion } from "./idiomaControlador.js"
+import { idiomaCarga } from "./idiomaControlador.js"
 import { crearTicket } from "./pedido.js"
 import { getPedidos } from "./firebase.js"
 
@@ -11,7 +11,7 @@ animacionCarrito()
 funcionalidadesCarrito()
 
 // Idioma
-idiomaRedireccion()
+idiomaCarga()
 
 // Crear pedido
 const btn = document.getElementById("customer-btn")

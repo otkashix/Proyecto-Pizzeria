@@ -39,7 +39,15 @@ if(localBebidas){
     cc = 0
     ccz = 0
     cerv = 0
-    agua = 0
+    agua = 0   
+}
+
+if(cc + ccz + cerv + agua > 0){
+    let ti = document.createElement("span")
+    ti.classList.add("product-title")
+    ti.innerText = "BEBIDAS"
+    fa.appendChild(ti)
+    pa.appendChild(fa)
 
     if(cc > 0){
         let txt = document.createElement("p")
@@ -61,16 +69,8 @@ if(localBebidas){
         txt.innerText = `Agua: ${agua}`
         pa.appendChild(txt)
     }
-    
-    if(cc + ccz + cerv + agua > 0){
-        let ti = document.createElement("span")
-        ti.classList.add("product-title")
-        ti.innerText = "BEBIDAS"
-        fa.appendChild(ti)
-        pa.appendChild(fa)
 
-        superparent.appendChild(pa)
-    }
+    superparent.appendChild(pa)
 }
 
     if(pedido !== undefined){
