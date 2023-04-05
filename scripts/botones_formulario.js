@@ -1,7 +1,5 @@
 import { actualizarCarrito } from "./pedido.js"
 import { funcionalidadesCarrito } from "./modales.js"
-// let costs;
-// const fetching = fetch('./scripts/precios.json').then(response => response.json()).then(data => console.log(data))
 
 const addPizza = document.getElementById("btn-add-pizza")
 const addBebida = document.getElementById("btn-add-bebida")
@@ -24,7 +22,6 @@ addPizza.addEventListener("click", () => {
         let random = Math.floor(Math.random() * 1000)
         let contiene = false
         pizzas.map(pizza => {
-            console.log(pizza.id)
             if(pizza.id === random) contiene = true
         })
         if(contiene) random += random + Math.floor(Math.floor(random / 2) + Math.floor(Math.random() * 100))
@@ -55,7 +52,6 @@ addPizza.addEventListener("click", () => {
                 final.push(p)
             })
             final.push(pizza)
-            // console.log(`Actualizada pizza ${JSON.stringify(final)}`)
         }
         actualizarCarrito(final)
         setTimeout(funcionalidadesCarrito, 1000)
@@ -63,12 +59,6 @@ addPizza.addEventListener("click", () => {
     }
 
     localStorage.setItem("pizzas", order())
-    
-    // Sino, insertar cada pizza en un localstorage con una id como pizzaNUMERO
-    // recorrer todos los localstorage y coger por ID
-    // Guardar cada pizza en una array
-    // Manipular el Array
-    // Recorrer el Array y guardar cada pizza de nuevo pero ya updateada
 
 })
 addBebida.addEventListener("click", () => {

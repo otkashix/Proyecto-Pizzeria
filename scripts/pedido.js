@@ -18,6 +18,12 @@ while(superparent.firstChild) {
     superparent.firstChild.remove()
 }
 
+let pa = document.createElement("div")
+pa.id = `bebida`
+pa.classList.add("product-box")
+let fa = document.createElement("div")
+fa.classList.add("product-bar")
+
 let localBebidas = localStorage.getItem("bebidas")
 let bebidas = JSON.parse(localBebidas)
 let cc, ccz, cerv, agua
@@ -33,91 +39,90 @@ if(localBebidas){
     ccz = 0
     cerv = 0
     agua = 0
+
+    if(cc > 0){
+        let txt = document.createElement("p")
+        txt.innerText = `Coca Cola: ${cc}`
+        pa.appendChild(txt)
+    }
+    if(ccz > 0){
+        let txt = document.createElement("p")
+        txt.innerText = `Coca Cola Zero: ${ccz}`
+        pa.appendChild(txt)
+    }
+    if(cerv > 0){
+        let txt = document.createElement("p")
+        txt.innerText = `Cerveza: ${cerv}`
+        pa.appendChild(txt)
+    }
+    if(agua > 0){
+        let txt = document.createElement("p")
+        txt.innerText = `Agua: ${agua}`
+        pa.appendChild(txt)
+    }
+    
+    if(cc + ccz + cerv + agua > 0){
+        let ti = document.createElement("span")
+        ti.classList.add("product-title")
+        ti.innerText = "BEBIDAS"
+        fa.appendChild(ti)
+        pa.appendChild(fa)
+
+        superparent.appendChild(pa)
+    }
 }
 
-let pa = document.createElement("div")
-pa.id = `bebida`
-pa.classList.add("product-box")
-let fa = document.createElement("div")
-fa.classList.add("product-bar")
-let ti = document.createElement("span")
-ti.classList.add("product-title")
-ti.innerText = "BEBIDAS"
-fa.appendChild(ti)
-pa.appendChild(fa)
-
-if(cc > 0){
-    let txt = document.createElement("p")
-    txt.innerText = `Coca Cola: ${cc}`
-    pa.appendChild(txt)
-}
-if(ccz > 0){
-    let txt = document.createElement("p")
-    txt.innerText = `Coca Cola Zero: ${ccz}`
-    pa.appendChild(txt)
-}
-if(cerv > 0){
-    let txt = document.createElement("p")
-    txt.innerText = `Cerveza: ${cerv}`
-    pa.appendChild(txt)
-}
-if(agua > 0){
-    let txt = document.createElement("p")
-    txt.innerText = `Agua: ${agua}`
-    pa.appendChild(txt)
-}
-
-superparent.appendChild(pa)
-
-pedido.map((item) => {
-    // Diccionario para al mostrar los ingredientes, muestre cada ingrediente seriamente. Ej: "Aceituna" en vez de "acei"
-    let dictionary = [
-        {"jamon": "Jamón Serrano"},
-        {"york": "Jamón York"},
-        {"atun": "Atún"},
-        {"acei": "Aceitunas"},
-        {"huevo": "Huevo"}
-    ]
-
-    let nuevoIng = []
-    item["ingredientes"].map(i => {
-        dictionary.map(word => {
-            if(String(Object.keys(word)) === i){
-                nuevoIng.push(String(Object.values(word)))
-            }
+if(pedido !== undefined){
+    pedido.map((item) => {
+        // Diccionario para al mostrar los ingredientes, muestre cada ingrediente seriamente. Ej: "Aceituna" en vez de "acei"
+        let dictionary = [
+            {"jamon": "Jamón Serrano"},
+            {"york": "Jamón York"},
+            {"atun": "Atún"},
+            {"acei": "Aceitunas"},
+            {"huevo": "Huevo"}
+        ]
+    
+        let nuevoIng = []
+        item["ingredientes"].map(i => {
+            dictionary.map(word => {
+                if(String(Object.keys(word)) === i){
+                    nuevoIng.push(String(Object.values(word)))
+                }
+            })
         })
+    
+        let parent = document.createElement("div")
+        parent.id = `p-${item.id}`
+        parent.classList.add("product-box")
+        let father = document.createElement("div")
+        father.classList.add("product-bar")
+        let titulo = document.createElement("span")
+        titulo.classList.add("product-title")
+        titulo.innerText = "PIZZA CUSTOMIZADA"
+        father.appendChild(titulo)
+        let pic = document.createElement("img")
+        pic.src = './images/close.png'
+        pic.classList.add("btn-remove")
+        father.appendChild(pic)
+        let masa = document.createElement("p")
+        masa.innerText = `Masa: ${item.masa}`
+        let tomate = document.createElement("p")
+        tomate.innerText = `Tomate: ${item.tomate}`
+        let queso = document.createElement("p")
+        queso.innerText = `Queso: ${item.queso}`
+        let ingr = document.createElement("span")
+        ingr.classList.add("product-value")
+        ingr.innerText = `Ingredientes: ${nuevoIng.join(", ")}`
+        parent.appendChild(father)
+        parent.appendChild(masa)
+        parent.appendChild(tomate)
+        parent.appendChild(queso)
+        parent.appendChild(ingr)
+        superparent.appendChild(parent)
+        funcionalidadesCarrito()
     })
-
-    let parent = document.createElement("div")
-    parent.id = `p-${item.id}`
-    parent.classList.add("product-box")
-    let father = document.createElement("div")
-    father.classList.add("product-bar")
-    let titulo = document.createElement("span")
-    titulo.classList.add("product-title")
-    titulo.innerText = "PIZZA CUSTOMIZADA"
-    father.appendChild(titulo)
-    let pic = document.createElement("img")
-    pic.src = './images/close.png'
-    pic.classList.add("btn-remove")
-    father.appendChild(pic)
-    let masa = document.createElement("p")
-    masa.innerText = `Masa: ${item.masa}`
-    let tomate = document.createElement("p")
-    tomate.innerText = `Tomate: ${item.tomate}`
-    let queso = document.createElement("p")
-    queso.innerText = `Queso: ${item.queso}`
-    let ingr = document.createElement("span")
-    ingr.classList.add("product-value")
-    ingr.innerText = `Ingredientes: ${nuevoIng.join(", ")}`
-    parent.appendChild(father)
-    parent.appendChild(masa)
-    parent.appendChild(tomate)
-    parent.appendChild(queso)
-    parent.appendChild(ingr)
-    superparent.appendChild(parent)
-    funcionalidadesCarrito()
-})
+}
 
 }
 
@@ -145,7 +150,12 @@ export async function crearTicket(){
         "cc": "Coca Cola",
         "zero": "Coca Cola Zero",
         "cerv": "Cerveza",
-        "agua": "Agua"
+        "agua": "Agua",
+        "jamon": "jamón serrano",
+        "york": "jamón york",
+        "atun": "atún",
+        "acei": "aceitunas",
+        "huevo": "huevo"
     }
 
     const localBebidas = localStorage.getItem("bebidas")
@@ -199,7 +209,11 @@ export async function crearTicket(){
         })
         let item = document.createElement("p")
         item.classList.add("pedido-item")
-        item.innerText = `PIZZA CUSTOMIZADA: ${pizza["ingredientes"].join(", ")}     -> ${price}€`
+        let arrayIngr = []
+        pizza["ingredientes"].map((ing) => {
+            arrayIngr.push(dictionary[ing])
+        })
+        item.innerText = `PIZZA CUSTOMIZADA: ${arrayIngr.join(", ")} -> ${price}€`
         parent.appendChild(item)
     })
     let textoPrecio = document.createElement("p")
@@ -230,4 +244,5 @@ export async function crearTicket(){
     localStorage.removeItem("pizzas")
     localStorage.removeItem("bebidas")
     addPedido(pizzas, bebidas)
+    actualizarCarrito()
 }
